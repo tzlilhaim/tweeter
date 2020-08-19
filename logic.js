@@ -3,7 +3,7 @@
 const Tweeter = function () {
     const posts = []
     let postIdCounter = posts.length
-    let commentIdCounter = 6
+    let commentIdCounter = 0
     const getPosts = () => posts
     const addPost = (pText) => {
         debugger
