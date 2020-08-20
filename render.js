@@ -5,44 +5,44 @@ const Renderer = function () {
         $("#posts").empty()
 
         // Generate comments section for the post's comments
-        const genPostComments = commentsArr => {
+        const _genPostComments = commentsArr => {
             
             // If there are comments on this post, generate a comment element for each
-            let cElements = ``
+            let _cElements = ``
             if (commentsArr.length) {
 
                 // Create comment delete span element
-                const commentDeleteEl = `<span class='delete-comment'>X</span>`
+                const _commentDeleteEl = `<span class='delete-comment'>X</span>`
 
                 // Run all over coments arr and create full comment node
                 for (comment of commentsArr) {
-                    cElements = cElements + `<div data-id='${comment.id}'>${commentDeleteEl + comment.text}</div>`
+                    _cElements = _cElements + `<div data-id='${comment.id}'>${_commentDeleteEl + comment.text}</div>`
                 }
             }
 
             // Create the add comment div
-            const commentAddEl = `<div><input placeholder='Got something to say?'><button>Comment</button></div>`
-            let commentsSection = `<div class='comments'>${cElements + commentAddEl}</div>`
-            return commentsSection
+            const _commentAddEl = `<div><input placeholder='Got something to say?'><button>Comment</button></div>`
+            let _commentsSection = `<div class='comments'>${_cElements + _commentAddEl}</div>`
+            return _commentsSection
         }
 
         // Generate a span element for the post's text
-        const genPostText = text => `<span class='post-text'>${text}</span>`
+        const _genPostText = text => `<span class='post-text'>${text}</span>`
         
         // Create the post's delete button element
-        const postDeleteEl = `<button class='delete'>Delete Post</button>`
+        const _postDeleteEl = `<button class='delete'>Delete Post</button>`
 
         // Generate a full post div element and its content
-        const genPostElement = post => {
+        const _genPostElement = p => {
             
-            let postElement = `<div class='post' data-id='${post.id}'>
-                ${genPostText(post.text) + genPostComments(post.comments) + postDeleteEl}</div>`
-            return postElement
+            let _postElement = `<div class='post' data-id='${p.id}'>
+                ${_genPostText(p.text) + _genPostComments(p.comments) + _postDeleteEl}</div>`
+            return _postElement
         }
 
         // Run all over posts arr and create & append nodes to the html
-        for (post of posts) {
-            $("#posts").append(genPostElement(post))
+        for (p of posts) {
+            $("#posts").append(_genPostElement(p))
         }
     }
     return { renderPosts }
