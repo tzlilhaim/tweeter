@@ -1,8 +1,9 @@
 const Renderer = function () {
     renderPosts = posts => {
-        
-        // Empty posts in view
+
+        // Empty posts in view and twit input
         $("#posts").empty()
+        $("#input").val(null)
 
         // Generate comments section for the post's comments
         const _genPostComments = commentsArr => {
